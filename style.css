@@ -132,6 +132,7 @@ main {
 }
 
 .logo {
+	font-size: 1em;
 	display: inline-block;
 	background: url("./images/firefox-logo.png") no-repeat center center;
 	background-size: 8.2em;
@@ -140,13 +141,16 @@ main {
 }
 
 .wordmark {
+	font-size: 1em;
 	display: inline-block;
-	background: url("chrome://branding/content/firefox-wordmark.svg") no-repeat center center;
-	background-size: 13.4em;
-	filter: brightness(100);
 	height: 8.2em;
 	width: 13.4em;
 	margin-inline-start: 1.6em;
+}
+
+.wordmark svg {
+	height: 8.2em;
+	width: 13.4em;
 }
 
 .credits {
