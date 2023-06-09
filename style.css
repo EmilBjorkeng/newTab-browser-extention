@@ -13,15 +13,15 @@ body {
 	font-size: 1em;
 	position: fixed;
 	background: url("chrome://global/skin/icons/settings.svg") no-repeat center center;
-	background-size: 1.6em;
 	filter: invert(1);
 	border: 0;
 	border-radius: .4em;
-	padding: 1.5em;
-	background-color: transparent;
+	padding: 1.4em;
 	top: 1.6em;
 	inset-inline-end: 1.6em;
 	background-color: #bdbeb220;
+	width: 1.6em;
+	height: 1.6em;
 }
 
 .open-btn:hover {
