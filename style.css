@@ -1,0 +1,128 @@
+body {
+	background-color: #1c1b22;
+	background-size: cover;
+	margin: 0;
+	font-size: 62.5%;
+}
+
+.settings-wrapper {
+	font-size: 1.1em;
+}
+
+.open-btn {
+	font-size: 1em;
+	position: fixed;
+	background: url("chrome://global/skin/icons/settings.svg") no-repeat center center;
+	background-size: 1.6em;
+	filter: invert(1);
+	border: 0;
+	border-radius: .4em;
+	padding: 1.5em;
+	background-color: transparent;
+	top: 1.6em;
+	inset-inline-end: 1.6em;
+	background-color: #bdbeb220;
+}
+
+.open-btn:hover {
+	background-color: #bdbeb2; /*Inverted version of #42414d*/
+}
+
+.close-btn {
+	font-size: 1em;
+	display: block;
+	background-color: #fbfbfe1a;
+	color: white;
+	border: 0;
+	border-radius: .4em;
+	margin-inline-start: auto;
+	padding: .8em 1em;
+}
+
+.close-btn span {
+	font-size: 1.3em;
+	line-height: 12px;
+}
+
+.close-btn:hover {
+	background-color: #61606b;
+}
+
+.settings {
+	font-size: 1em;
+	position: fixed;
+	background-color: #42414d;
+	height: 100%;
+	width: 40em;
+	right: -43.2em;
+	transition: right .2s;
+	padding: 1.6em;
+}
+
+.opened {
+	right: 0;
+}
+
+.img-list {
+	position: relative;
+	list-style: none;
+	padding: 1.5em;
+	height: calc(100% - 60px - 1.5em);
+	overflow: scroll;
+}
+
+.img-list li {
+	margin-bottom: 1.5em;
+	overflow: hidden;
+}
+
+.img-list li img {
+	width: 100%;
+	user-select: none;
+}
+
+.active {
+	border: 3px solid #00CFFF;
+	border-radius: 7px;
+}
+
+.outer-wrapper {
+	font-size: 1.5em;
+	display: flex;
+	height: 100vh;
+	margin: 0;
+	justify-content: center;
+	align-items: center;
+}
+
+main {
+	width: 98.6em;
+	margin: auto;
+}
+
+.inner-wrapper {
+	padding: 0 0 3.8em;
+}
+
+.logo-full {
+	display: flex;
+	justify-content: center;
+}
+
+.logo {
+	display: inline-block;
+	background: url("chrome://branding/content/about-logo.png") no-repeat center;
+	background-size: 8.2em;
+	height: 8.2em;
+	width: 8.2em;
+}
+
+.wordmark {
+	display: inline-block;
+	background: url("chrome://branding/content/firefox-wordmark.svg") no-repeat center center;
+	background-size: 13.4em;
+	filter: brightness(100);
+	height: 8.2em;
+	width: 13.4em;
+	margin-inline-start: 1.6em;
+}

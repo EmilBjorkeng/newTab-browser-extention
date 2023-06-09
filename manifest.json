@@ -1,0 +1,20 @@
+{
+  "description": "Edits the newTab",
+  "manifest_version": 2,
+  "name": "newTab",
+  "version": "1.0",
+  "icons": {
+    "48": "icons/image-48.png"
+  },
+  "chrome_url_overrides": {
+    "newtab": "./index.html"
+  },
+  "permissions": [
+    "storage"
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{d37d731b-76a9-44d9-9e41-e059cc3bb1c3}"
+    }
+  }
+}
