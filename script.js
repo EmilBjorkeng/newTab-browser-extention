@@ -62,7 +62,7 @@ function selectImg(img, key) {
 	let image = img.children[0].children[0].src;
 	body.style.backgroundImage = `url(${image})`;
 
-	// Add credits
+	// Set credits
 	credits.classList.remove('hidden');
 	credits.children[1].children[0].textContent = img.children[1].textContent;
 	credits.children[1].children[1].textContent = img.children[2].textContent;
@@ -91,6 +91,7 @@ browser.storage.sync.get(['image', 'index'], (items) => {
 	let image = items.image || "";
 	setBackgroundImage(image);
 	activateImageInSettingsMenu(items.index);
+	setCredits(items.index)
 });
 
 function setBackgroundImage(image) {
@@ -98,7 +99,18 @@ function setBackgroundImage(image) {
 }
   
 function activateImageInSettingsMenu(index) {
-	if (index != null) {
-		imgList[index].children[0].classList.add('active');
-	}
+	if (index == null) return;
+
+	imgList[index].children[0].classList.add('active');
+}
+
+function setCredits(index) {
+	if (index == null) return;
+
+	// Set credits
+	credits.classList.remove('hidden');
+	credits.children[1].children[0].textContent = imgList[index].children[1].textContent;
+	credits.children[1].children[1].textContent = imgList[index].children[2].textContent;
+	credits.children[1].children[0].href = imgList[index].children[1].href;
+	credits.children[1].children[1].href = imgList[index].children[2].href;
 }
