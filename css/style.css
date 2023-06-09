@@ -1,0 +1,61 @@
+body {
+	background-color: #1c1b22;
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+	margin: 0;
+	font-size: 62.5%;
+	font-family: 'Montserrat', Helvetica, sans-serif;
+}
+
+.settings-wrapper {
+	font-size: 1.1em;
+}
+
+.open-btn {
+	font-size: 1em;
+	position: fixed;
+	background-color: #42414d20;
+	padding: .5em;
+	top: 1.6em;
+	border: 0;
+	border-radius: .4em;
+	inset-inline-end: 1.6em;
+	border: 2px solid transparent;
+	line-height: 0;
+}
+
+.open-btn svg {
+	width: 1.5em;
+	height: 1.5em;
+}
+
+.open-btn:hover {
+	background-color: #42414d;
+}
+
+.open-btn:focus-visible {
+	outline: none;
+	border: 2px solid #ff9f20;
+	border-radius: 7px;
+}
+
+.settings {
+	font-size: 1em;
+	position: fixed;
+	background-color: #42414d;
+	height: 100%;
+	width: 40em;
+	right: -43.2em;
+	transition: right .2s;
+	padding: 1.6em;
+	z-index: 10;
+}
+
+.opened {
+	right: 0;
+}
+
+.settings:focus-within {
+	right: 0;
+}

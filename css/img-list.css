@@ -1,0 +1,67 @@
+.img-list {
+	position: relative;
+	list-style: none;
+	padding: 0 1.5em 1.5em 1.5em;
+	height: calc(100% - 1.5em);
+	overflow: scroll;
+	margin: 0;
+}
+
+.img-list span {
+	color: white;
+	font-size: 2em;
+	font-weight: 500;
+	line-height: 1.7em;
+}
+
+.img-list li {
+	margin-bottom: 1.5em;
+}
+
+.img-list li img {
+	width: 100%;
+	user-select: none;
+}
+
+.img-list li button {
+	width: 100%;
+}
+
+.img-list a {
+	display: none;
+}
+
+.img-list p {
+	color: white;
+	font-size: 2em;
+}
+
+.img-btn {
+	border: none;
+	background-color: transparent;
+	padding: 0;
+	font-size: inherit;
+	overflow: hidden;
+}
+
+.custom {
+	aspect-ratio: 16/9;
+	border: 2px solid #393842;
+	border-radius: 7px;
+}
+
+.custom svg {
+	padding-top: 1.5rem;
+	height: 30%;
+}
+
+.active {
+	border: 3px solid #00CFFF;
+	border-radius: 7px;
+}
+
+.img-btn:focus-visible {
+	outline: none;
+	border: 3px solid #ff9f20;
+	border-radius: 7px;
+}

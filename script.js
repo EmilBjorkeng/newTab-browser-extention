@@ -8,30 +8,21 @@ openBtn.addEventListener('click', () => {
 	settings.classList.add('opened');
 });
 
-// Open and close the setting menu based on where you click
+// Keep the menu open if you click inside of it
 body.addEventListener('click', (elem) => {
-	// If you are clicking outside the settings menu then close it
-	if (!isInsideSettingsPage(elem.target)) {
-	  	settings.classList.remove('opened');
+	if (isInsideSettingsPage(elem.target)) {
+	  	settings.classList.add('opened');
+		return;
 	}
-
-	// If you are clicking inside the settings menu then make it stay open 
-	// (important for when using the focus to make the menu open)
-	// Also check if its activated on a button because then we know it was the keyboard that did it
-	else {
-	  	if (!elem.target.closest('.close-btn') && elem.target.tagName != "BUTTON") {
-			settings.classList.add('opened');
-		}
-	}
+	settings.classList.remove('opened');
 });
 
-function isInsideSettingsPage(elem) {
-	let e = elem;
-	while (e != body) {
-	  if (e.classList.contains('settings-wrapper')) {
-		return true;
-	  }
-	  e = e.parentNode;
+function isInsideSettingsPage(e) {
+	while (e !== body) {
+		if (e.classList.contains('settings-wrapper')) {
+			return true;
+		}
+		e = e.parentNode;
 	}
 	return false;
 }
@@ -41,15 +32,30 @@ Object.keys(imgList).forEach((key) => {
 	let img = imgList[key];
 	img.addEventListener('click', () => {
 		if (img.children[0].classList.contains('active')) {
-			deselectImg(img)
+			deselectImg(img);
+			return;
 		}
-		else {
-			selectImg(img, key)
+		activateImage(img);
+		if (img.children[1] !== undefined) {
+			selectImg(img, key);
+			return;
 		}
+		selectCustomImg(key);
 	})
 })
 
-function selectImg(img, key) {
+function deselectImg(img) {
+	// Remove background, active class and credits
+	img.children[0].classList.remove('active');
+	body.style.backgroundImage = "";
+	credits.classList.add('hidden');
+
+	// Remove image from synced and local storage
+	browser.storage.sync.set({image: ""});
+	browser.storage.local.set({image: ""});
+}
+
+function activateImage(img) {
 	// Remove every other active class
 	let active = document.getElementsByClassName('active');
 	for (let j = 0; j < active.length; j++) {
@@ -57,11 +63,9 @@ function selectImg(img, key) {
 	}
 	// add active class to the image
 	img.children[0].classList.add('active');
+}
 
-	// Set image as background
-	let image = img.children[0].children[0].src;
-	body.style.backgroundImage = `url(${image})`;
-
+function selectImg(img, key) {
 	// Set credits
 	credits.classList.remove('hidden');
 	credits.children[1].children[0].textContent = img.children[1].textContent;
@@ -69,38 +73,78 @@ function selectImg(img, key) {
 	credits.children[1].children[0].href = img.children[1].href;
 	credits.children[1].children[1].href = img.children[2].href;
 
-	// Store choosen image for next time
+	// Set image as background
+	let image = img.children[0].children[0].src;
+	setImageAsBackground(image, key);
+}
+
+function selectCustomImg(key) {
+	// Remove credits
+	credits.classList.add('hidden');
+
+	// Choose image
+	let input = document.createElement('input');
+	input.accept = "image/*";
+	input.type = 'file';
+	input.click();
+
+	// When image is choosen
+	input.onchange = e => {
+		let file = e.target.files[0];
+		var reader = new FileReader();
+		// Convert file to bites
+		reader.onload = function(e){
+			let image = e.target.result;
+			setImageAsBackground(image, key);
+		}
+		reader.readAsDataURL(file);
+	}
+}
+
+function setImageAsBackground(image, key) {
+	body.style.backgroundImage = `url(${image})`;
+
+	if (key == imgList.length-1) {
+		// Local storage (for uploaded images)
+		browser.storage.local.set({
+			image: image,
+			index: key
+		});
+		// Set the key in the synced storage so it knows to not activate
+		browser.storage.sync.set({index: Object.keys(imgList).indexOf(key)});
+		return;
+	}
+
+	// Synced storage
 	browser.storage.sync.set({
 		image: image,
 		index: Object.keys(imgList).indexOf(key)
 	});
+	// Set the key in the local storage so it knows to not activate
+	browser.storage.local.set({index: Object.keys(imgList).indexOf(key)});
 }
 
-function deselectImg(img) {
-	img.children[0].classList.remove('active');
-	body.style.backgroundImage = "";
-	credits.classList.add('hidden');
-
-	// Remove stored image
-	browser.storage.sync.set({image: ""});
-}
-
-// Get image from storage
+// Get image from the synced storage
 browser.storage.sync.get(['image', 'index'], (items) => {
-	// Set the background image and activate the image in the settings menu
+	if (items.index == imgList.length-1) return;
+
 	let image = items.image || "";
-	setBackgroundImage(image);
+	body.style.backgroundImage = `url(${image})`;
 	activateImageInSettingsMenu(items.index);
 	setCredits(items.index)
 });
 
-function setBackgroundImage(image) {
+// Get image from the local storage
+browser.storage.local.get(['image', 'index'], (items) => {
+	if (items.index != imgList.length-1) return;
+
+	let image = items.image || "";
 	body.style.backgroundImage = `url(${image})`;
-}
-  
+	activateImageInSettingsMenu(items.index);
+});
+
 function activateImageInSettingsMenu(index) {
 	if (index == null) return;
-
 	imgList[index].children[0].classList.add('active');
 }
 
