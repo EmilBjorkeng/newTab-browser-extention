@@ -29,6 +29,16 @@ body.addEventListener('click', (elem) => {
 			settings.classList.remove('opened');
 		}
 	}
+	// If you are clicking inside the settings menu then make it stay open 
+	// (important for when using the focus to make the menu open)
+	else {
+		if (!settings.classList.contains('opened')) {
+			// And its not the close button being pressed
+			if (elem.target != closeBtn && elem.target != closeBtn.firstChild) {
+				settings.classList.add('opened');
+			}
+		}
+	}
 });
 
 let imgList = document.getElementsByClassName('img-list')[0].children;
@@ -44,7 +54,8 @@ for (let i = 0; i < imgList.length; i++) {
 			browser.storage.sync.set({image: ""});
 		}
 		// Select new image
-		else {		// Remove every other active class
+		else {
+			// Remove every other active class
 			let active = document.getElementsByClassName('active');
 			for (let j = 0; j < active.length; j++) {
 				active[j].classList.remove('active');
