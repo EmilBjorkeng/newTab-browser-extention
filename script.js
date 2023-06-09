@@ -1,6 +1,7 @@
-openBtn = document.getElementsByClassName("open-btn")[0];
-closeBtn = document.getElementsByClassName("close-btn")[0];
-settings = document.getElementsByClassName("settings")[0];
+let body = document.body;
+let openBtn = document.getElementsByClassName("open-btn")[0];
+let closeBtn = document.getElementsByClassName("close-btn")[0];
+let settings = document.getElementsByClassName("settings")[0];
 
 openBtn.addEventListener("click", () => {
 	settings.classList.add("opened");
@@ -8,9 +9,27 @@ openBtn.addEventListener("click", () => {
 
 closeBtn.addEventListener("click", () => {
 	settings.classList.remove("opened");
+	closeBtn.blur()
 });
 
-imgList = document.getElementsByClassName("img-list")[0].children;
+body.addEventListener("click", (elem) => {
+	// Check if you are clicking inside the setting menu
+	e = elem.target;
+	let isInsideSettingsPage = false;
+	while (e != body) {
+		if (e.classList.contains("settings-wrapper")) {
+			isInsideSettingsPage = true;
+			break;
+		}
+		e = e.parentNode;
+	}
+	// If you are clicking outside the settings menu close it
+	if (!isInsideSettingsPage) {
+		settings.classList.remove("opened");
+	}
+});
+
+let imgList = document.getElementsByClassName("img-list")[0].children;
 
 // Loop over all elements (images) in the list and add a even lisener
 for (let i = 0; i < imgList.length; i++) {
@@ -18,7 +37,7 @@ for (let i = 0; i < imgList.length; i++) {
 		// Deselect image
 		if (imgList[i].classList.contains("active")) {
 			imgList[i].classList.remove("active");
-			document.body.style.backgroundImage = "";
+			body.style.backgroundImage = "";
 			// Remove stored image
 			browser.storage.sync.set({image: ""});
 		}
@@ -29,10 +48,10 @@ for (let i = 0; i < imgList.length; i++) {
 				active[j].classList.remove("active");
 			}
 			// add active class to the image
-			imgList[i].classList.add("active");
+			imgList[i].firstChild.classList.add("active");
 			// Set image as background
-			let image = imgList[i].firstChild.src;
-			document.body.style.backgroundImage = `url(${image})`;
+			let image = imgList[i].firstChild.firstChild.src;
+			body.style.backgroundImage = `url(${image})`;
 			// Store choosen image for next time
 			browser.storage.sync.set({
 				image: image,
@@ -46,7 +65,7 @@ browser.storage.sync.get(["image", "index"], (items) => {
 	// Change image to the stored one
 	let image = items.image;
 	if (image === undefined) image = "";
-	document.body.style.backgroundImage = `url(${image})`;
+	body.style.backgroundImage = `url(${image})`;
 	// Set image in settings menu to active
 	let index = items.index;
 	if (image != "") {

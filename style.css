@@ -13,19 +13,25 @@ body {
 	font-size: 1em;
 	position: fixed;
 	background: url("chrome://global/skin/icons/settings.svg") no-repeat center center;
+	background-size: 1.4em;
 	filter: invert(1);
 	border: 0;
 	border-radius: .4em;
-	padding: 1.4em;
+	padding: 1.3em;
 	top: 1.6em;
 	inset-inline-end: 1.6em;
-	background-color: #bdbeb220;
-	width: 1.6em;
-	height: 1.6em;
+	background-color: #bdbeb220; /*Inverted version of #42414d20*/
+	border: 2px solid transparent;
 }
 
 .open-btn:hover {
 	background-color: #bdbeb2; /*Inverted version of #42414d*/
+}
+
+.open-btn:focus-visible {
+	outline: none;
+	border: 2px solid #0060DF; /*Inverted version of #ff9f20*/
+	border-radius: 7px;
 }
 
 .close-btn {
@@ -36,7 +42,8 @@ body {
 	border: 0;
 	border-radius: .4em;
 	margin-inline-start: auto;
-	padding: .8em 1em;
+	padding: .6em .8em;
+	border: 2px solid transparent;
 }
 
 .close-btn span {
@@ -48,6 +55,12 @@ body {
 	background-color: #61606b;
 }
 
+.close-btn:focus-visible {
+	outline: none;
+	border: 2px solid #ff9f20;
+	border-radius: 7px;
+}
+
 .settings {
 	font-size: 1em;
 	position: fixed;
@@ -57,9 +70,14 @@ body {
 	right: -43.2em;
 	transition: right .2s;
 	padding: 1.6em;
+	z-index: 10;
 }
 
 .opened {
+	right: 0;
+}
+
+.settings:focus-within {
 	right: 0;
 }
 
@@ -73,7 +91,6 @@ body {
 
 .img-list li {
 	margin-bottom: 1.5em;
-	overflow: hidden;
 }
 
 .img-list li img {
@@ -81,8 +98,22 @@ body {
 	user-select: none;
 }
 
+.img-btn {
+	border: none;
+	background-color: transparent;
+	padding: 0;
+	font-size: inherit;
+	overflow: hidden;
+}
+
 .active {
 	border: 3px solid #00CFFF;
+	border-radius: 7px;
+}
+
+.img-btn:focus-visible {
+	outline: none;
+	border: 3px solid #ff9f20;
 	border-radius: 7px;
 }
 
