@@ -1,8 +1,11 @@
 body {
 	background-color: #1c1b22;
 	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
 	margin: 0;
 	font-size: 62.5%;
+	font-family: 'Montserrat', Helvetica, sans-serif;
 }
 
 .settings-wrapper {
@@ -12,50 +15,26 @@ body {
 .open-btn {
 	font-size: 1em;
 	position: fixed;
-	background: url("chrome://global/skin/icons/settings.svg") no-repeat center center;
-	background-size: 1.4em;
-	filter: invert(1);
+	background-color: #42414d20;
+	padding: .5em;
+	top: 1.6em;
 	border: 0;
 	border-radius: .4em;
-	padding: 1.3em;
-	top: 1.6em;
 	inset-inline-end: 1.6em;
-	background-color: #bdbeb220; /*Inverted version of #42414d20*/
 	border: 2px solid transparent;
+	line-height: 0;
+}
+
+.open-btn svg {
+	width: 1.5em;
+	height: 1.5em;
 }
 
 .open-btn:hover {
-	background-color: #bdbeb2; /*Inverted version of #42414d*/
+	background-color: #42414d;
 }
 
 .open-btn:focus-visible {
-	outline: none;
-	border: 2px solid #0060DF; /*Inverted version of #ff9f20*/
-	border-radius: 7px;
-}
-
-.close-btn {
-	font-size: 1em;
-	display: block;
-	background-color: #fbfbfe1a;
-	color: white;
-	border: 0;
-	border-radius: .4em;
-	margin-inline-start: auto;
-	padding: .6em .8em;
-	border: 2px solid transparent;
-}
-
-.close-btn span {
-	font-size: 1.3em;
-	line-height: 12px;
-}
-
-.close-btn:hover {
-	background-color: #61606b;
-}
-
-.close-btn:focus-visible {
 	outline: none;
 	border: 2px solid #ff9f20;
 	border-radius: 7px;
@@ -84,9 +63,17 @@ body {
 .img-list {
 	position: relative;
 	list-style: none;
-	padding: 1.5em;
-	height: calc(100% - 60px - 1.5em);
+	padding: 0 1.5em 1.5em 1.5em;
+	height: calc(100% - 1.5em);
 	overflow: scroll;
+	margin: 0;
+}
+
+.img-list span {
+	color: white;
+	font-size: 2em;
+	font-weight: 500;
+	line-height: 1.7em;
 }
 
 .img-list li {
@@ -96,6 +83,10 @@ body {
 .img-list li img {
 	width: 100%;
 	user-select: none;
+}
+
+.img-list a {
+	display: none;
 }
 
 .img-btn {
@@ -142,7 +133,7 @@ main {
 
 .logo {
 	display: inline-block;
-	background: url("chrome://branding/content/about-logo.png") no-repeat center;
+	background: url("./images/firefox-logo.png") no-repeat center center;
 	background-size: 8.2em;
 	height: 8.2em;
 	width: 8.2em;
@@ -156,4 +147,26 @@ main {
 	height: 8.2em;
 	width: 13.4em;
 	margin-inline-start: 1.6em;
+}
+
+.credits {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	color: white;
+	font-size: 1.2em;
+	margin: .6em;
+}
+
+.credits a {
+	color: white;
+}
+
+.credits svg {
+	height: .9em;
+	width: .9em;
+}
+
+.hidden {
+	display: none;
 }

@@ -5,21 +5,76 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>New Tab</title>
 		<link rel="icon" type="image/png" href="chrome://branding/content/icon32.png">
+		<link rel="preconnect" href="https://fonts.googleapis.com" \>
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" \>
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&amp;display=swap" rel="stylesheet" \>
 		<link rel="stylesheet" href="style.css" type="text/css">
 		<script type="application/javascript" src="script.js" defer></script>
 	</head>
-	<body>
+	<body tabindex="-1">
 		<div class="settings-wrapper">
-			<button class="open-btn"></button>
+			<button class="open-btn">
+				<svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="320.000000pt" height="320.000000pt" viewBox="0 0 320.000000 320.000000" preserveAspectRatio="xMidYMid meet">
+					<g transform="translate(0.000000,320.000000) scale(0.100000,-0.100000)" fill="#ffffff" stroke="none">
+					<path d="M1340 3174 c-67 -31 -124 -84 -155 -144 -12 -25 -41 -110 -64 -190 -25 -90 -47 -150 -58 -158 -10 -7 -45 -29 -78 -48 l-60 -35 -155 37 c-197 48 -265 49 -355 5 -81 -40 -115 -79 -203 -232 -98 -172 -105 -191 -105 -279 0 -115 23 -157 170 -314 l123 -131 0 -83 0 -84 -116 -121 c-145 -153 -178 -212 -177 -326 0 -89 7 -108 105 -280 84 -147 118 -187 190 -226 84 -46 176 -46 355 -1 78 20 148 36 156 36 14 0 111 -53 150 -82 11 -8 33 -68 58 -158 23 -80 52 -165 64 -190 31 -60 88 -113 155 -144 53 -25 61 -26 260 -26 205 0 205 0 265 29 39 18 77 47 108 81 49 54 52 62 135 339 18 62 20 64 92 107 40 24 79 44 87 44 8 0 77 -16 153 -35 222 -56 320 -46 424 45 33 29 137 194 195 308 48 95 48 215 -2 309 -12 23 -75 98 -139 167 l-118 124 0 84 1 83 122 131 c147 156 170 199 170 314 1 89 -13 124 -121 307 -77 130 -117 173 -199 210 -81 37 -156 35 -343 -11 l-155 -37 -74 44 c-73 44 -75 46 -93 108 -83 277 -86 285 -135 339 -31 34 -69 63 -108 81 -60 29 -60 29 -265 29 -199 0 -207 -1 -260 -26z m429 -249 c12 -12 41 -91 72 -195 57 -191 82 -236 154 -272 22 -12 70 -40 106 -63 38 -25 90 -48 120 -55 51 -11 66 -9 239 34 155 37 189 43 209 33 30 -15 164 -242 164 -279 0 -21 -29 -57 -135 -167 -159 -167 -160 -169 -160 -357 -1 -143 15 -216 54 -250 55 -51 236 -252 242 -270 4 -14 -14 -56 -65 -145 -39 -68 -78 -130 -87 -136 -24 -19 -48 -16 -233 29 -159 39 -175 41 -226 30 -33 -7 -80 -28 -121 -55 -37 -25 -86 -54 -108 -65 -72 -37 -96 -79 -154 -272 -30 -101 -60 -183 -71 -195 -18 -18 -33 -20 -169 -20 -136 0 -151 2 -169 20 -11 11 -34 70 -51 130 -66 232 -71 246 -102 281 -17 19 -50 45 -72 56 -23 11 -72 41 -110 65 -111 72 -139 74 -342 24 -182 -43 -225 -49 -242 -28 -14 16 -137 230 -145 250 -11 30 6 54 136 191 90 96 132 147 143 178 20 56 22 294 4 356 -10 32 -44 74 -148 183 -106 110 -135 146 -135 167 1 37 134 264 164 279 20 10 54 4 209 -33 173 -43 188 -45 239 -34 30 7 82 30 120 55 36 23 82 50 101 60 43 21 88 62 105 95 7 14 34 99 60 190 26 91 54 173 62 182 21 24 41 26 190 25 118 -2 135 -4 152 -22z"/>
+					<path d="M1443 2185 c-204 -55 -375 -228 -428 -432 -19 -73 -19 -233 0 -306 54 -207 225 -378 432 -432 73 -19 233 -19 306 0 207 54 378 225 432 432 19 73 19 233 0 306 -54 208 -224 377 -432 431 -75 20 -239 20 -310 1z m284 -267 c78 -29 163 -114 193 -195 30 -79 26 -196 -10 -268 -35 -72 -116 -148 -187 -175 -79 -30 -196 -26 -268 10 -71 34 -149 117 -174 185 -28 75 -28 175 0 251 28 75 116 164 190 192 75 29 180 29 256 0z"/>
+					</g>
+				</svg>
+			</button>
 			<div class="settings" tabindex="-1">
-				<button class="close-btn"><span>Close</span></button>
 				<ul class="img-list" tabindex="-1">
-					<li><button class="img-btn"><img src="images/mountain.jpg"></button></li>
-					<li><button class="img-btn"><img src="images/mountain2.jpg"></button></li>
-					<li><button class="img-btn"><img src="images/mountain3.jpg"></button></li>
-					<li><button class="img-btn"><img src="images/city.jpg"></button></li>
-					<li><button class="img-btn"><img src="images/city2.jpg"></button></li>
-					<li><button class="img-btn"><img src="images/city3.jpg"></button></li>
+					<span>Urban</span>
+					<li>
+						<button class="img-btn"><img src="images/dubai-1767540.jpg"></button>
+						<a href="https://pixabay.com/users/bulletrain743-3598825/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1767540">Nikhil Kurian</a>
+						<a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1767540">Pixabay</a>
+					</li>
+					<li>
+						<button class="img-btn"><img src="images/clouds-2517653.jpg"></button>
+						<a href="https://pixabay.com/users/carloyuen-5937035/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2517653">carloyuen</a>
+						<a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2517653">Pixabay</a>
+					</li>
+					<li>
+						<button class="img-btn"><img src="images/buildings-1850129.jpg"></button>
+						<a href="https://pixabay.com/users/pexels-2286921/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1850129">Pexels</a>
+						<a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1850129">Pixabay</a>
+					</li>
+					<li>
+						<button class="img-btn"><img src="images/singapore-1990959.jpg"></button>
+						<a href="https://pixabay.com/users/walkerssk-1409366/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1990959">Walkerssk</a>
+						<a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1990959">Pixabay</a>
+					</li>
+					<li>
+						<button class="img-btn"><img src="images/architecture-1867194.jpg"></button>
+						<a href="https://pixabay.com/users/pexels-2286921/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1867194">Pexels</a>
+						<a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1867194">Pixabay</a>
+					</li>
+					<span>Nature</span>
+					<li>
+						<button class="img-btn"><img src="images/mountains-1899264.jpg"></button>
+						<a href="https://pixabay.com/users/walkerssk-1409366/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1899264">Walkerssk</a>
+						<a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1899264">Pixabay</a>
+					</li>
+					<li>
+						<button class="img-btn"><img src="images/beach-5429182.jpg"></button>
+						<a href="https://pixabay.com/users/walkerssk-1409366/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1899264">Walkerssk</a>
+						<a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1899264">Pixabay</a>
+					</li>
+					<li>
+						<button class="img-btn"><img src="images/waterfall-5138793.jpg"></button>
+						<a href="https://pixabay.com/users/blickpixel-52945/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=5138793">Michael Schwarzenberger</a>
+						<a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=5138793">Pixabay</a>
+					</li>
+					<li>
+						<button class="img-btn"><img src="images/boat-4899802.jpg"></button>
+						<a href="https://pixabay.com/users/pladicon2012acacias-15473339/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4899802">pladicon2012acacias</a>
+						<a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4899802">Pixabay</a>
+					</li>
+					<li>
+						<button class="img-btn"><img src="images/sunset-1373171.jpg"></button>
+						<a href="https://pixabay.com/users/cleverpix-2508959/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1373171">Cindy Lever</a>
+						<a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1373171">Pixabay</a>
+					</li>
 				</ul>
 			</div>
 		</div>
@@ -32,6 +87,20 @@
 					</div>
 				</div>
 			</main>
+		</div>
+		<div class="credits hidden">
+			<svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="96.000000pt" height="96.000000pt" viewBox="0 0 96.000000 96.000000" preserveAspectRatio="xMidYMid meet">
+				<g transform="translate(0.000000,96.000000) scale(0.100000,-0.100000)" fill="#ffffff" stroke="none">
+					<path d="M235 849 c-17 -4 -52 -31 -79 -58 -45 -45 -50 -55 -54 -105 -2 -30 -1 -67 2 -82 9 -34 199 -230 248 -255 56 -29 115 -25 171 11 38 24 47 35 47 58 0 55 -40 68 -88 27 -51 -43 -67 -35 -185 83 -127 128 -133 146 -66 207 52 47 75 42 146 -27 43 -42 55 -50 77 -44 16 4 28 16 32 32 6 21 -2 34 -42 76 -75 77 -135 99 -209 77z"/>
+					<path d="M445 616 c-73 -32 -98 -101 -43 -120 22 -8 32 -5 58 17 54 46 71 38 187 -75 57 -57 106 -112 109 -124 11 -43 -57 -124 -104 -124 -7 0 -39 25 -72 55 -33 30 -68 55 -78 55 -26 0 -42 -20 -42 -51 0 -50 130 -149 195 -149 32 0 90 25 122 53 62 55 88 137 62 203 -14 38 -216 243 -256 260 -40 17 -99 17 -138 0z"/>
+				</g>
+			</svg>
+			<span>
+				Image by 
+				<a href="" tabindex="1">Person</a>
+				from
+				<a href="" tabindex="1">Place</a>
+			</span>
 		</div>
 	</body>
 </html>

@@ -1,87 +1,104 @@
-let body = document.body;
-let openBtn = document.getElementsByClassName('open-btn')[0];
-let closeBtn = document.getElementsByClassName('close-btn')[0];
-let settings = document.getElementsByClassName('settings')[0];
+const body = document.body;
+const openBtn = document.getElementsByClassName('open-btn')[0];
+const settings = document.getElementsByClassName('settings')[0];
+const imgList = document.getElementsByClassName('img-list')[0].children;
+const credits = document.getElementsByClassName('credits')[0];
 
 openBtn.addEventListener('click', () => {
 	settings.classList.add('opened');
 });
 
-closeBtn.addEventListener('click', () => {
-	settings.classList.remove('opened');
-	closeBtn.blur()
-});
-
+// Open and close the setting menu based on where you click
 body.addEventListener('click', (elem) => {
-	// Check if you are clicking inside the setting menu
-	e = elem.target;
-	let isInsideSettingsPage = false;
-	while (e != body) {
-		if (e.classList.contains('settings-wrapper')) {
-			isInsideSettingsPage = true;
-			break;
-		}
-		e = e.parentNode;
-	}
 	// If you are clicking outside the settings menu then close it
-	if (!isInsideSettingsPage) {
-		if (settings.classList.contains('opened')) {
-			settings.classList.remove('opened');
-		}
+	if (!isInsideSettingsPage(elem.target)) {
+	  	settings.classList.remove('opened');
 	}
+
 	// If you are clicking inside the settings menu then make it stay open 
 	// (important for when using the focus to make the menu open)
+	// Also check if its activated on a button because then we know it was the keyboard that did it
 	else {
-		if (!settings.classList.contains('opened')) {
-			// And its not the close button being pressed
-			if (elem.target != closeBtn && elem.target != closeBtn.firstChild) {
-				settings.classList.add('opened');
-			}
+	  	if (!elem.target.closest('.close-btn') && elem.target.tagName != "BUTTON") {
+			settings.classList.add('opened');
 		}
 	}
 });
 
-let imgList = document.getElementsByClassName('img-list')[0].children;
-
-// Loop over all elements (images) in the list and add a even lisener
-for (let i = 0; i < imgList.length; i++) {
-	imgList[i].addEventListener('click', () => {
-		// Deselect image
-		if (imgList[i].firstChild.classList.contains('active')) {
-			imgList[i].firstChild.classList.remove('active');
-			body.style.backgroundImage = "";
-			// Remove stored image
-			browser.storage.sync.set({image: ""});
-		}
-		// Select new image
-		else {
-			// Remove every other active class
-			let active = document.getElementsByClassName('active');
-			for (let j = 0; j < active.length; j++) {
-				active[j].classList.remove('active');
-			}
-			// add active class to the image
-			imgList[i].firstChild.classList.add('active');
-			// Set image as background
-			let image = imgList[i].firstChild.firstChild.src;
-			body.style.backgroundImage = `url(${image})`;
-			// Store choosen image for next time
-			browser.storage.sync.set({
-				image: image,
-				index: i
-			});
-		}
-	})
+function isInsideSettingsPage(elem) {
+	let e = elem;
+	while (e != body) {
+	  if (e.classList.contains('settings-wrapper')) {
+		return true;
+	  }
+	  e = e.parentNode;
+	}
+	return false;
 }
 
-browser.storage.sync.get(['image', 'index'], (items) => {
-	// Change image to the stored one
-	let image = items.image;
-	if (image === undefined) image = "";
-	body.style.backgroundImage = `url(${image})`;
-	// Set image in settings menu to active
-	let index = items.index;
-	if (image != "") {
-		imgList[index].firstChild.classList.add('active');
-	}
+// Selecting images
+Object.keys(imgList).forEach((key) => {
+	let img = imgList[key];
+	img.addEventListener('click', () => {
+		if (img.children[0].classList.contains('active')) {
+			deselectImg(img)
+		}
+		else {
+			selectImg(img, key)
+		}
+	})
 })
+
+function selectImg(img, key) {
+	// Remove every other active class
+	let active = document.getElementsByClassName('active');
+	for (let j = 0; j < active.length; j++) {
+		active[j].classList.remove('active');
+	}
+	// add active class to the image
+	img.children[0].classList.add('active');
+
+	// Set image as background
+	let image = img.children[0].children[0].src;
+	body.style.backgroundImage = `url(${image})`;
+
+	// Add credits
+	credits.classList.remove('hidden');
+	credits.children[1].children[0].textContent = img.children[1].textContent;
+	credits.children[1].children[1].textContent = img.children[2].textContent;
+	credits.children[1].children[0].href = img.children[1].href;
+	credits.children[1].children[1].href = img.children[2].href;
+
+	// Store choosen image for next time
+	browser.storage.sync.set({
+		image: image,
+		index: Object.keys(imgList).indexOf(key)
+	});
+}
+
+function deselectImg(img) {
+	img.children[0].classList.remove('active');
+	body.style.backgroundImage = "";
+	credits.classList.add('hidden');
+
+	// Remove stored image
+	browser.storage.sync.set({image: ""});
+}
+
+// Get image from storage
+browser.storage.sync.get(['image', 'index'], (items) => {
+	// Set the background image and activate the image in the settings menu
+	let image = items.image || "";
+	setBackgroundImage(image);
+	activateImageInSettingsMenu(items.index);
+});
+
+function setBackgroundImage(image) {
+	body.style.backgroundImage = `url(${image})`;
+}
+  
+function activateImageInSettingsMenu(index) {
+	if (index != null) {
+		imgList[index].children[0].classList.add('active');
+	}
+}
