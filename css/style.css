@@ -36,7 +36,7 @@ body {
 
 .open-btn:focus-visible {
 	outline: none;
-	border: 2px solid #ff9f20;
+	border: 2px solid #236ee8;
 	border-radius: 7px;
 }
 
