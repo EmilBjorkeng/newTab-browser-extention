@@ -22,12 +22,20 @@ main {
 }
 
 .logo {
-	font-size: 1em;
-	display: inline-block;
-	background: url("../images/firefox-logo.png") no-repeat center center;
-	background-size: 8.2em;
-	height: 8.2em;
 	width: 8.2em;
+	aspect-ratio: 1;
+}
+
+.logo-firefox {
+	background: url("../images/firefox-logo.svg") no-repeat center center;
+}
+
+.logo-nightly {
+	background: url("../images/nightly-logo.svg") no-repeat center center;
+}
+
+.logo-developer {
+	background: url("../images/dev-edition-logo.svg") no-repeat center center;
 }
 
 .wordmark {

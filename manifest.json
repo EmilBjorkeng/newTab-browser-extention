@@ -2,7 +2,7 @@
   "description": "Adds my own newtab with backgrounds",
   "manifest_version": 2,
   "name": "newTab",
-  "version": "1.5.1",
+  "version": "1.6",
   "icons": {
     "48": "icons/image-48.png"
   },
@@ -15,7 +15,10 @@
   "permissions": ["storage"],
   "browser_specific_settings": {
     "gecko": {
-      "id": "{d37d731b-76a9-44d9-9e41-e059cc3bb1c3}"
+      "id": "{d37d731b-76a9-44d9-9e41-e059cc3bb1c3}",
+      "data_collection_permissions": {
+        "required": ["none"]
+      }
     }
   }
 }
